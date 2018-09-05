@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <title>Matching Game</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda|Tangerine|Lato">
+    <link rel="stylesheet" href="css/app.css">
+    
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Card Matching Game</h1>
+        </header>
+
+        <section class="score-panel">
+        	<ul class="stars">
+                <li class="fa fa-star"></li>
+        		<li class="fa fa-star"></li>
+        		<li class="fa fa-star"></li>
+                <li class="fa fa-star"></li>
+        	</ul>
+
+        	<span class="moves"></span>
+
+            <div class="timer"></div>
+
+            <div class="restart" onclick=refresh()>
+        		<i class="fa fa-repeat"></i>
+        	</div>
+        </section>
+
+        <div class="deck">
+            <div class="card" id='diamond'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-diamond card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='plane'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-paper-plane-o card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='anchor'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-anchor card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='bolt'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-bolt card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='cube'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-cube card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='anchor'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-anchor card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='leaf'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-leaf card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='bicycle'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-bicycle card__face card__face--back"></div>  
+            </div>
+
+             <div class="card" id='diamond'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-diamond card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='bomb'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-bomb card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='leaf'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-leaf card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='bomb'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-bomb card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='bolt'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-bolt card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='bicycle'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-bicycle card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='plane'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-paper-plane-o card__face card__face--back"></div>  
+            </div>
+
+            <div class="card" id='cube'>
+                <div class="card__face card__face--front"></div>
+                <div class="fa fa-cube card__face card__face--back"></div>  
+            </div>
+
+        </div>
+
+
+        <div id="overlay">
+
+            <h2 id="header"> You are a Winner! </h2>
+
+            <div id="text">
+
+                    <p>You took <span id=endMove> </span> moves </p>
+                    <p>in ...   <span id=endTime> </span> </p>
+                    <p>Rating ... <span id=endRating></span></p>
+
+                <div id="buttons">
+
+                    <button type="button" id="button1" class="btn btn-primary" onclick=playAgain()>Play Again</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+

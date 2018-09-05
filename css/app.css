@@ -1,0 +1,342 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;  /* see https://zellwk.com/blog/media-query-units/ great resource */
+                      /* http://www.standardista.com/px-to-rem-conversion-if-root-font-size-is-16px/ */
+                      /* font-size -->  pixels(px) - percent - points(pt) - em or rem */
+                      /*                16px       - 100%    - 12pt       - 1em or 1rem */
+                      /* 16px is browser default size */
+                      /* rem is based on browser default size; em is based on parent font size */
+}
+
+body {
+    background: #ffffff url('../img/geometry2.png');
+    font-family: 'Coda', cursive;
+    font-size: 16px;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+h1 {
+    font-family: 'Tangerine';
+    font-size: 1.875rem;
+    font-weight: bold;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 290px;
+    height: 300px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: center right;
+    transition: transform 1s;
+    height: 3.3rem; /* 4.1rem */
+    width: 3.3rem;  /* 4.1rem */
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 8px 5px 15px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-top: .5rem;
+    text-align: center;
+    background-color: #a994ce;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+
+/*replace the content value with the
+corresponding value from the list below*/
+ 
+.deck .card__face--front:before {
+    content: "\f015";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    color: #083968;
+    font-size: 1.5rem;
+}
+
+.deck .card__face--back {          
+  background: #02b3e4;
+  font-size: 1.5rem;
+  transform: rotateY(180deg);
+}
+
+
+.deck .card.open {
+    background: #02b3e4;
+    cursor: default;
+    transform: translateX(-100%) rotateY(-180deg);
+
+}
+
+
+.deck .card.open.match {
+    cursor: default;
+    background: #02ccba;
+    border-style: solid;
+    border-color: green;
+    border-width: 4px;
+    box-shadow: 10px 6px 17px 0 rgba(0, 255, 0, 0.3);
+}
+
+.deck .card.inactivated {
+    pointer-events: none;
+    
+}
+
+.deck .card.open.noMatch {
+    cursor: default;
+    background: #02ccba;
+    border-style: solid;
+    border-color: red;
+    border-width: 4px;
+    box-shadow: 10px 6px 17px 0 rgba(0, 255, 0, 0.3);
+
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.moves {
+    color: blue;
+}
+
+.score-panel {
+    text-align: center;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 30px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    color: green;
+    display: inline-block;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
+
+.timer {
+    display: inline-block;
+    color: red;
+}
+
+
+/* 
+ * Styles for Overlay
+ */
+
+#overlay {
+    position: absolute;
+    display: none;
+    width: 85%;
+    height: 50%;
+    top: 50%; 
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    box-shadow: 8px 5px 15px 0 rgba(46, 61, 73, 0.5);
+    transform:translate(-50%, -50%);
+    border-radius: 25px;
+    font-size: 2.25rem;
+    text-align: center;
+    color: white;
+    background-color: #8080ff;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+#header {
+    font-family: 'Tangerine';
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#text {
+    position: absolute;
+    padding-top: 1.2em;
+    font-family: 'Lato';
+    font-style: italic;
+    top: 50%;
+    left: 50%;
+    font-size: .4em;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+#buttons {
+    margin-top: 40px;
+}
+
+#button1 {
+    width: 75%;
+    border-radius: .8rem;
+    font-size: 1.0em;
+
+}
+
+
+/* 
+ * Media Queries
+ */
+
+
+@media (min-width: 660px) {
+
+    #overlay {
+        font-size: 3.2rem;
+        
+    }   
+
+
+@media (min-width: 768px) {
+    .container{
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .deck {
+        width: 410px;
+        height: 430px;
+    }
+
+    .deck .card {
+        height: 5.1rem;
+        width: 5.1rem;
+    }
+
+    .deck .card__face {
+        padding: 1.2rem;
+    }
+
+    .deck .card__face--front:before {
+        font-size: 2.0rem;
+
+    }
+
+    .deck .card__face--back {
+        font-size: 2.0rem;
+
+    }
+
+    .score-panel {
+        width: 275px;
+
+    }
+
+    #overlay {
+        font-size: 3.5rem;
+        width: 55%;
+        height: 50%;
+    }
+
+}
+
+
+
+@media (min-width: 1224px) {
+    .container {
+        font-size: 1.5rem;
+    }
+
+    h1 {
+        font-size: 4.5rem;
+    }
+
+    .deck {
+        width: 660px;
+        height: 680px;
+
+    }
+
+    .deck .card {
+        height: 125px;
+        width: 125px;
+    }
+
+    .deck .card__face {
+        padding: 2.0rem;
+    }
+
+    .deck .card__face--front:before {
+        font-size: 3.0rem;
+
+    }
+
+    .deck .card__face--back {
+        font-size: 3.0rem;
+
+    }
+
+    .score-panel {
+        width: 345px;
+
+    }
+
+    #overlay {
+        font-size: 4.0rem;
+        width: 40%;
+        height: 50%;
+    }
+    
+}
+
+

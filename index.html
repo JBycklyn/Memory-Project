@@ -126,13 +126,18 @@
 
             <div id="text">
 
-                    <p>You took <span id=endMove> </span> moves </p>
-                    <p>in ...   <span id=endTime> </span> </p>
-                    <p>Rating ... <span id=endRating></span></p>
+                    <p>You took <span id=endingMoves> </span> moves </p>
+                    <p>in ...   <span id=endingTime> </span> </p>
+                    <p>Rating ... <span id=endingRating></span></p>
 
-                <div id="buttons">
+                <div class="row">
 
-                    <button type="button" id="button1" class="btn btn-primary" onclick=playAgain()>Play Again</button>
+                    <div class="col-sm-12 text-center">
+
+                        <button class="btn btn-primary" onclick=playAgain()>Play Again</button>
+                        <button class="btn btn-primary" onclick=closeWin()>Close</button>        
+
+                </div>
 
                 </div>
 

@@ -219,15 +219,15 @@ corresponding value from the list below*/
     -ms-transform: translate(-50%,-50%);
 }
 
-#buttons {
-    margin-top: 40px;
+.btn {
+    width: 45%;
+    border-radius: .8rem;
+    font-size: .5em;
+
 }
 
-#button1 {
-    width: 75%;
-    border-radius: .8rem;
-    font-size: 1.0em;
-
+.col-sm-12 {
+    margin-top: 15%;
 }
 
 #endMove, #endTime, #endRating {

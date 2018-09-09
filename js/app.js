@@ -6,17 +6,24 @@
 
     const deck = document.querySelector('.deck');
     
-    let card = document.getElementsByClassName('card');
-    let cards = [...card];
+    var card = document.getElementsByClassName('card');
+    var cards = [...card];
 
     var openCards = [];
-    let shuffledCards = [];
-    let displayCard = '';
-    let checkMatch = '';
-    let matchedArray = [];
-    let moves = 0;
-    let idx = 4;
-    let stars = document.querySelectorAll(".stars li");
+    var shuffledCards = [];
+    var displayCard = '';
+    var checkMatch = '';
+    var matchedArray = [];
+    var moves = 0;
+    var idx = 4;
+    var stars = document.querySelectorAll(".stars li");
+    var seconds = 0;
+    var minutes = 0;
+    var hours = 0;
+    var timer = document.querySelector(".timer");
+    var interval;
+
+    timer.innerHTML = minutes + ' /mins ' + seconds + ' /secs';
 
     // Shuffle function from http://stackoverflow.com/a/2450976
 
@@ -198,25 +205,33 @@
 
     function winBoxOn() {
 
-        var endTime = timer.innerHTML;
-        var endRating = document.querySelector(".stars").innerHTML;
+        var endingTime = timer.innerHTML;
+        var endingRating = document.querySelector(".stars").innerHTML;
 
         document.getElementById("overlay").style.display = "block";
 
-        document.getElementById("endMove").innerHTML = moves;
-        document.getElementById("endRating").innerHTML = endRating;
-        document.getElementById("endTime").innerHTML = endTime;
+        document.getElementById("endingMoves").innerHTML = moves;
+        document.getElementById("endingRating").innerHTML = endingRating;
+        document.getElementById("endingTime").innerHTML = endingTime;
 
     };
 
     function winBoxOff() {
         document.getElementById("overlay").style.display = "none";
+
+        return true;
     };
 
     function playAgain() {
 
         winBoxOff();
         startGame();
+
+    };
+
+     function closeWin() {
+
+        winBoxOff();
 
     };
 
@@ -285,14 +300,6 @@
 
     };
 
-    var seconds = 0;
-    var minutes = 0;
-    var hours = 0;
-    var timer = document.querySelector(".timer");
-    var interval;
-
-    timer.innerHTML = minutes + ' /mins ' + seconds + ' /secs';
-
     function startTimer() {
 
         interval = setInterval (function() {
@@ -325,18 +332,4 @@
 
     };
 
-
-
-   
-
-/*
- *    set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one) /
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
-*/
 

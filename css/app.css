@@ -11,12 +11,8 @@ body {
     width: 100%;
     height: 100%;
     margin: 0;
-    padding: 0;  /* see https://zellwk.com/blog/media-query-units/ great resource */
-                      /* http://www.standardista.com/px-to-rem-conversion-if-root-font-size-is-16px/ */
-                      /* font-size -->  pixels(px) - percent - points(pt) - em or rem */
-                      /*                16px       - 100%    - 12pt       - 1em or 1rem */
-                      /* 16px is browser default size */
-                      /* rem is based on browser default size; em is based on parent font size */
+    padding: 0;
+
 }
 
 body {
@@ -121,6 +117,8 @@ corresponding value from the list below*/
     border-color: green;
     border-width: 4px;
     box-shadow: 10px 6px 17px 0 rgba(0, 255, 0, 0.3);
+    animation-name: growBorder, rotate;
+    animation-duration: 1s;
 }
 
 .deck .card.inactivated {
@@ -135,7 +133,8 @@ corresponding value from the list below*/
     border-color: red;
     border-width: 4px;
     box-shadow: 10px 6px 17px 0 rgba(0, 255, 0, 0.3);
-
+    animation-name: changeBorder;
+    animation-duration: 1s;
 }
 
 /*
@@ -230,10 +229,41 @@ corresponding value from the list below*/
     margin-top: 15%;
 }
 
-#endMove, #endTime, #endRating {
+#endingMoves, #endingTime, #endingRating {
 
     color: yellow;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+
+/*
+ * Animations
+ */
+
+
+@keyframes growBorder {
+
+    from {border-width: 4px;}
+    to {border-width: 10px;}
+
+    from {border-color: green;}
+    to {border-color: white;}
+
+}
+
+@keyframes rotate { 
+
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+
+}
+
+@keyframes changeBorder { 
+
+    0% {border-style: solid;}
+    50% {border-style: dotted;}
+    100%% {border-style: solid;}
+
 }
 
 

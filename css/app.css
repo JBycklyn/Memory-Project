@@ -118,7 +118,8 @@ corresponding value from the list below*/
     border-width: 4px;
     box-shadow: 10px 6px 17px 0 rgba(0, 255, 0, 0.3);
     animation-name: growBorder, rotate;
-    animation-duration: 1s;
+    animation-duration: 1.5s;
+
 }
 
 .deck .card.inactivated {
@@ -134,7 +135,7 @@ corresponding value from the list below*/
     border-width: 4px;
     box-shadow: 10px 6px 17px 0 rgba(0, 255, 0, 0.3);
     animation-name: changeBorder;
-    animation-duration: 1s;
+    animation-duration: 7s;
 }
 
 /*
@@ -243,26 +244,33 @@ corresponding value from the list below*/
 
 @keyframes growBorder {
 
-    from {border-width: 4px;}
-    to {border-width: 10px;}
-
-    from {border-color: green;}
-    to {border-color: white;}
+    0% {border-width: 4px; border-color: green;}
+    25% {border-width: 8px; border-color: yellow;}
+    50% {border-width: 16px; border-color: blue;}
+    75% {border-width: 8px; border-color: white;}
+    100% {border-width: 4px; border-color: green;}
 
 }
 
-@keyframes rotate { 
+@keyframes rotate {
 
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
+    from {transform-origin: center; transform: rotate(0deg);} 
+    to {transform-origin: center; transform: rotate(360deg);} 
 
 }
 
 @keyframes changeBorder { 
 
-    0% {border-style: solid;}
+    0% {border-style: dotted;}
+    12% {border-width: 5px;}
+    25% {border-style: solid;}
+    37% {border-width: 5px;} 
     50% {border-style: dotted;}
-    100%% {border-style: solid;}
+    63% {border-width: 5px;}
+    75% {border-style: dotted;}
+    87% {border-width: 5px;} 
+    99% {border-style: solid;}
+    100% {border-width: 5px;}
 
 }
 

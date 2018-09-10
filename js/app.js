@@ -1,6 +1,4 @@
-/*
- * Create a list that holds all of your cards
- */
+
 
 // deck of all cards
 
@@ -165,7 +163,7 @@
             openCards = [];
             reactivate();            
 
-        }, 1200);
+        }, 1300);
         
     };
 

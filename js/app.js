@@ -163,7 +163,7 @@
             openCards = [];
             reactivate();            
 
-        }, 1300);
+        }, 1500);
         
     };
 
@@ -215,6 +215,7 @@
     };
 
     function winBoxOff() {
+
         document.getElementById("overlay").style.display = "none";
 
         return true;

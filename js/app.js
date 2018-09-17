@@ -108,9 +108,12 @@
             moves = moves + 1;
 
             numMoves();
-            starRating();            
+            starRating();
 
-            if (openCards[0].id === openCards[1].id) {
+            var cardOne = openCards[0].id.slice(0, -1);
+            var cardTwo = openCards[1].id.slice(0, -1);             
+
+            if (cardOne === cardTwo) {
 
                     match();
 

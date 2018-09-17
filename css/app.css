@@ -170,6 +170,7 @@ corresponding value from the list below*/
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    color: darkblue;
 }
 
 .timer {

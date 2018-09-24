@@ -132,6 +132,7 @@
 
         if (matchedArray.length === 16) {
 
+            clearTimeout(interval);
             winBoxOn();
 
         }

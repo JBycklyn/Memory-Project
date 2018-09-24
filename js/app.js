@@ -103,12 +103,14 @@
 
     displayCard = function() {
 
-        // flips card open upon click ('open class').
-        // prevents card from being click again ('inactivated class').
+        // flips card open upon click (class 'open').
+        // prevents card from being click again (class 'inactivated').
     
         this.classList.toggle('open');
         this.classList.toggle('inactivated');
+        
     };
+
 
     checkMatch = function() {
 
@@ -116,10 +118,10 @@
         // inactivate() makes all cards not clickable.
         // starts timer by calling numMoves().
         // two cards is one move.
-        // starRating tracks moves.
-        // the match process begins when openCards has two cards.
-        // a match occurs if the ids (without the last character) equal
-        // match() is called.
+        // starRating() tracks moves.
+        // the checkMatch() process begins when openCards has two cards.
+        // match() is called if the two cards equal.
+        // a match occurs if the ids (without the last character) equal.
         // if the ids do not equal, notMatch() is called and all remaining cards
         // are reactivated (made clickable).
 
@@ -153,9 +155,10 @@
 
         };
 
+
     winGame = function() {
 
-        // winBox() shows message if matchedArray is 16
+        // winBox() launches
         // timer stops
 
         if (matchedArray.length === 16) {
@@ -164,6 +167,7 @@
             winBoxOn();
 
         }
+
     };
 
 
@@ -187,13 +191,13 @@
 
         reactivate();
         
-    };           
+    };
 
    
     function notMatch() {
 
         // called from checkMatch() if a match is not found.
-        // provides 1500 milliseconds for user concentration assitance.
+        // provides 1500 milliseconds for user concentration assistance.
         // calls reactivate() to make remaining cards clickable.
 
         setTimeout(function(){
@@ -207,6 +211,7 @@
         }, 1500);
         
     };
+
 
     function inactivate() {
 
@@ -226,7 +231,9 @@
             }
 
         }));
+
     };
+
 
     function reactivate() {
 
@@ -246,11 +253,13 @@
             }
 
         }));
+
     };
+
 
     function winBoxOn() {
 
-        // called by winGame().
+        // called from winGame().
 
         var endingTime = timer.innerHTML;
         var endingRating = document.querySelector(".stars").innerHTML;
@@ -263,14 +272,16 @@
 
     };
 
+
     function winBoxOff() {
 
-        // called by closeWin() when user clicks the close button.
+        // called from closeWin() when user clicks the close button.
 
         document.getElementById("overlay").style.display = "none";
 
         return true;
     };
+
 
     function playAgain() {
 
@@ -282,15 +293,18 @@
 
     };
 
+
      function closeWin() {
 
         winBoxOff();
 
     };
 
+
     function refresh() {
         document.location.reload();
-    } 
+    }
+
 
     document.getElementsByClassName('moves')[0].innerHTML = moves + " /move(s)";
 
@@ -317,11 +331,11 @@
     function starRating() {
 
         // called by checkMatch().
-        // 12 moves is 4 stars.
-        // each move from 13 to 16 moves decrements by a half star.
-        // 17 moves is 2 stars.
+        // 12 moves is a rating of 4 stars.
+        // each move from 13 to 16 decrements by a half star.
+        // 17 moves is a rating of 2 stars.
         // 18 moves decrements by one star
-        // 18 or more moves is 1 star.
+        // 18 or more moves is a rating of 1 star.
 
         if (moves > 12 && moves < 17) {
 
@@ -359,10 +373,10 @@
         else {
 
             return;
-        }
-        
+        }        
 
     };
+
 
     function startTimer() {
 
@@ -383,7 +397,6 @@
 
         }, 1000);
     };
-
 
   // event listeners
 

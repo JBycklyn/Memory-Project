@@ -1,11 +1,12 @@
 
 
-// deck of all cards
+// deck of all cards.
 
     const deck = document.querySelector('.deck');
     
     var card = document.getElementsByClassName('card');
     var cards = [...card];
+
 
     var openCards = [];
     var shuffledCards = [];
@@ -15,6 +16,9 @@
     var moves = 0;
     var idx = 4;
     var stars = document.querySelectorAll(".stars li");
+    
+// variables for the timer.
+
     var seconds = 0;
     var minutes = 0;
     var hours = 0;
@@ -23,7 +27,7 @@
 
     timer.innerHTML = minutes + ' /mins ' + seconds + ' /secs';
 
-    // Shuffle function from http://stackoverflow.com/a/2450976
+// Shuffle function from http://stackoverflow.com/a/2450976.
 
     function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -40,8 +44,15 @@
 
     }
 
-
     document.body.onload = startGame();
+
+    // appChild() inputs: deck, shuffledCards[i].
+    // appChild() outputs: shuffled deck of cards.
+    // appChild() appends each card to deck.
+    // appChild() is called from startGame().
+    // startGame() resets moves, timer, matched count
+    // and clears the matched array.
+    // startGame() outputs: produces the deck using appChild().
 
     function appChild(arr1, arr2){
         arr1.appendChild(arr2);
@@ -49,7 +60,7 @@
 
     function startGame(){
 
-        // shuffle cards and add to deck
+        // shuffle cards and add to deck.
 
         shuffledCards = shuffle(cards);
     
@@ -60,13 +71,13 @@
           
             }
 
-        // reset moves and matched number
+        // reset moves and matched number.
 
         moves = 0;
         matchedArray = [];
         document.getElementsByClassName('moves')[0].innerHTML = moves + ' /move(s)';
 
-        // reset stars
+        // reset stars.
 
         stars = document.querySelectorAll(".stars li");
 
@@ -78,7 +89,7 @@
             stars[i].classList.add('fa-star');
         }    
 
-        // reset timer
+        // reset timer.
 
             seconds = 0;
             minutes = 0; 
@@ -91,12 +102,26 @@
 
 
     displayCard = function() {
+
+        // flips card open upon click ('open class').
+        // prevents card from being click again ('inactivated class').
     
         this.classList.toggle('open');
         this.classList.toggle('inactivated');
     };
 
     checkMatch = function() {
+
+        // adds each card to openCards array.
+        // inactivate() makes all cards not clickable.
+        // starts timer by calling numMoves().
+        // two cards is one move.
+        // starRating tracks moves.
+        // the match process begins when openCards has two cards.
+        // a match occurs if the ids (without the last character) equal
+        // match() is called.
+        // if the ids do not equal, notMatch() is called and all remaining cards
+        // are reactivated (made clickable).
 
         openCards.push(this);
         var len = openCards.length;
@@ -130,6 +155,9 @@
 
     winGame = function() {
 
+        // winBox() shows message if matchedArray is 16
+        // timer stops
+
         if (matchedArray.length === 16) {
 
             clearTimeout(interval);
@@ -140,6 +168,11 @@
 
 
     function match() {
+
+        // called from checkMatch() if a match is found.
+        // resets openCards array.
+        // updates matchedArray().
+        // calls reactivate() to make remaining cards clickable.
 
         openCards[0].classList.add('match');
         openCards[1].classList.add('match');
@@ -159,6 +192,10 @@
    
     function notMatch() {
 
+        // called from checkMatch() if a match is not found.
+        // provides 1500 milliseconds for user concentration assitance.
+        // calls reactivate() to make remaining cards clickable.
+
         setTimeout(function(){
             openCards[0].classList.remove('open');
             openCards[1].classList.remove('open');
@@ -172,6 +209,9 @@
     };
 
     function inactivate() {
+
+        // inactivates cards to make them unclickable.
+        // inactivate() is called from checkMatch().
 
         Array.prototype.filter.call(cards, (function (card) {
 
@@ -190,6 +230,9 @@
 
     function reactivate() {
 
+        // reactivates cards to make them clickable.
+        // reactivate() is called from match() and notMatch().
+
         Array.prototype.filter.call(cards, (function (card) {
 
             if (card.classList.contains('match')) {
@@ -207,6 +250,8 @@
 
     function winBoxOn() {
 
+        // called by winGame().
+
         var endingTime = timer.innerHTML;
         var endingRating = document.querySelector(".stars").innerHTML;
 
@@ -220,12 +265,17 @@
 
     function winBoxOff() {
 
+        // called by closeWin() when user clicks the close button.
+
         document.getElementById("overlay").style.display = "none";
 
         return true;
     };
 
     function playAgain() {
+
+        // called when user clicks the play again button.
+        // calls startGame().
 
         winBoxOff();
         startGame();
@@ -246,6 +296,10 @@
 
     function numMoves() {
 
+        // starts timer.
+        // calls startTimer().
+        // called by checkMatch().
+
         document.getElementsByClassName('moves')[0].innerHTML = moves + " /move(s)";
 
         if (moves == 1) {
@@ -261,6 +315,13 @@
 
 
     function starRating() {
+
+        // called by checkMatch().
+        // 12 moves is 4 stars.
+        // each move from 13 to 16 moves decrements by a half star.
+        // 17 moves is 2 stars.
+        // 18 moves decrements by one star
+        // 18 or more moves is 1 star.
 
         if (moves > 12 && moves < 17) {
 

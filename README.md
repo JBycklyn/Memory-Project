@@ -1,11 +1,12 @@
 # Udacity Memory Project
  (README.md)
 
+--------------------
 Goal of this Project
 --------------------
-
 > Build a browser-based card matching game that is responsive across all devices.
 
+--------
 Features
 --------
 > 16 card deck (8 matches).
@@ -27,7 +28,6 @@ Design
 -----
 Files
 -----
-
 > README.md
 > index.html
 > app.css
@@ -37,13 +37,12 @@ Files
 ------------
 Installation
 ------------
-
 > download the files from github.
 > install the files on your hard drive.
 
-
-## The Game and Operating Instructions
-
+-----------------------------------
+The Game and Operating Instructions
+-----------------------------------
 > 16 cards arranged randomly.
 > the object of the game is to flip two hidden cards to locate matches.
 > there are eight pairs of cards.
@@ -57,7 +56,9 @@ Installation
 > click the refresh icon to reload the page.
 > good luck!
 
-## Project Lessons and Tips
+------------------------
+Project Lessons and Tips
+------------------------
 
 > break problems down into small chuncks and start simple.
 > small victories add up to big wins! small steps!
@@ -69,6 +70,44 @@ Installation
 > css can do much more than you think.
 > animations are fun!
 > media queries are very important and necessary for responsive design.
+
+------------
+Function Map
+------------
+> startGame()		==>	appChild()
+
+> event listeners 	==>	displayCard()		checkMatch()		winGame()
+				<user click>		<openCards == 2>	<matchArray == 16>
+
+> checkMatch()		==>	inactivate()		numMoves()		starRating()
+
+				match()			notMatch()
+
+> numMoves()		==>	startTimer()
+
+> match()		==>	inactivate()
+
+> notMatch()		==> 	inactivate()
+
+> winGame()		==>	winBoxOn() 		clearTimeout()
+
+> closeWin()		==>	winBoxOff()
+
+> close button 		==> 	closeWin()
+
+> play again button 	==> 	playAgain()
+
+> playAgain() 		==> 	winBoxOff()		startGame()
+
+> refresh icon		==>	refresh()
+
+------
+Author
+------
+Stephen A. Bryant, Udacity Student.
+
+
+
 
 
 
